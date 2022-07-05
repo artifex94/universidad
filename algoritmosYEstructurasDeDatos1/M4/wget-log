@@ -1,0 +1,16 @@
+--2022-05-06 15:56:10--  https://meca.ues21.edu.ar/canvas/algoritmosyestructuradedatosi_1A21/L13/assets/QBIFK9t0c5IbCZUC_XS74fGAEQrj8Jqjs-M%C3%B3dulo%204%20-%20Lectura%201.pdf
+Resolving meca.ues21.edu.ar (meca.ues21.edu.ar)... 173.245.59.31, 198.41.222.131, 198.41.222.31, ...
+Connecting to meca.ues21.edu.ar (meca.ues21.edu.ar)|173.245.59.31|:443... failed: Connection timed out.
+Connecting to meca.ues21.edu.ar (meca.ues21.edu.ar)|198.41.222.131|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 205619 (201K) [application/pdf]
+Saving to: ‘QBIFK9t0c5IbCZUC_XS74fGAEQrj8Jqjs-Módulo 4 - Lectura 1.pdf’
+
+     0K .......... .......... .......... .......... .......... 24%  317K 0s
+    50K .......... .......... .......... .......... .......... 49% 2.53M 0s
+   100K .......... .......... .......... .......... .......... 74% 1004K 0s
+   150K .......... .......... .......... .......... .......... 99% 2.49M 0s
+   200K                                                       100% 1526G=0.2s
+
+2022-05-06 15:58:23 (814 KB/s) - ‘QBIFK9t0c5IbCZUC_XS74fGAEQrj8Jqjs-Módulo 4 - Lectura 1.pdf’ saved [205619/205619]
+

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>L1_variablesAleatoriasDiscretasParte1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="variables-aleatorias-discretas-parte-1">Variables aleatorias discretas. Parte 1</h1>
+<h2 id="introducci%C3%B3n">Introducción</h2>
+<p>Dado un espacio muestral $S$, podemos considerar las funciones $X:S\to R$, donde $R$ es el conjunto de los números reales. $X$ es llamada variable aleatoria. El concepto de variable aleatoria permite pasar de los resultados experimentales a un lenguaje funcional formal de fácil uso teórico.</p>
+<h3 id="presentaci%C3%B3n-del-caso">Presentación del caso</h3>
+<p>En un experimento químico, el investigador descubre que su variable X de estudio solo toma cuatro valores. Además, conoce los valores $P[X=x]$ y los consigna en la siguiente tabla:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$X$</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$P[X=x]$</td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">0.2</td>
+<td style="text-align:center">0.3</td>
+<td style="text-align:center">0.4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>¿Cuál es la probabilidad de que los valores de $X$ se encuentren entre 1 y 2?</li>
+<li>¿Cuál es la función de densidad de probabilidad acumulada de $X$?</li>
+<li>¿Cuál es el valor esperado de los resultados de la variabe del experimento?</li>
+<li>¿Cuál es la varianza de la variable $X$?</li>
+</ul>
+<h3 id="definici%C3%B3n-1">Definición 1</h3>
+<blockquote>
+<p>Para un espacio muestral dado $S$ de  algún experimento, una <strong>Variable aleatoria</strong> es cualquier regla que asocia un número con cada resultado en $S$. En lenguaje matemático, una variable aleatoria es una función cuyo dominio es el espacio muestral y cuyo rango es el conjunto de los números reales.<br>
+<em>Devore, 2012. cap. 3.</em></p>
+</blockquote>
+<h3 id="comentario-1">Comentario 1</h3>
+<p>Dado un experimento espacio muestral $S$, una variable aleatoria es una función<br>
+$$X:S\to R$$</p>
+<h3 id="ejemplo-1">Ejemplo 1</h3>
+<p>En nuestro caso, $X:S\to R$ y toma los valores<br>
+$$X=0, 1, 2, 3$$</p>
+<h3 id="definici%C3%B3n-2">Definición 2</h3>
+<blockquote>
+<p>Cualquier variable aleatoria cuyos únicos valores posibles son 0 y 1 se llama <strong>variable aleatoria de Bernoulli</strong><br>
+<em>Devore, 2012. cap. 3.</em></p>
+</blockquote>
+<h3 id="ejemplo-2">Ejemplo 2</h3>
+<p>Lanzar una moneda y ver qué cae genera una variable aleatoria como sigue:<br>
+El espacio muestral es<br>
+$$S=C, S$$<br>
+La variable aleatoria puede contar las caras en el lanzamiento, así:<br>
+$$X:S\to R$$<br>
+Mediante<br>
+$$XC=1,\quad XS=0$$</p>
+<h3 id="definici%C3%B3n-3-clasificaci%C3%B3n-de-las-variables-aleatorias">Definición 3: Clasificación de las variables aleatorias</h3>
+<blockquote>
+<p>Una variable <strong>discreta</strong> es una variable aleatoria cuyos valores posibles constituyen un conjunto finito o bien pueden ser puestos en lista en una secuencia infinita en la cual existe un primer elemento, un segundo elementom y así sucesivamente(&quot;contablemente&quot; infinita).<br>
+Una variable aleatoria es <strong>continua</strong> si <em>ambas</em> de las siguientes condiciones se cumplen:</p>
+<ol>
+<li>Su conjunto de valores posibles se compone de todos los nimeros que hay en un solo intervalo sobre la línea de numeración (posiblemente de extensión infinita, es decir, desde $-\infin$ hasta $\infin$) o todos los números en una unión disjunta de dichos intervalos (por ejemplo, $[0, 10]\cup[20, 30]$).</li>
+<li>Ningún valor posible de la variable tiene probabilidad positiva, esto es, $P(X=c)=0$ con cualquier valor posible de $c$.<br>
+<em>Devore, 2012, cap. 3.</em></li>
+</ol>
+</blockquote>
+<h3 id="ejemplo-3">Ejemplo 3</h3>
+<p>En nuestro caso $X:S\to R$ y toma los valores<br>
+$$x=0, 1, 2, 3$$<br>
+Por lo tanto, $X$ es una variable aleatoria discreta. Además<br>
+$$P[1\leq X\leq 2]=P[X=1\text{ o }X=2]=f_{(1)}+f_{(2)}=0.2+0.3=0.5$$</p>
+<h3 id="definici%C3%B3n-4-funci%C3%B3n-de-masa-de-probabilidad">Definición 4: Función de masa de probabilidad</h3>
+<blockquote>
+<p>La <strong>distribución de probabilidad</strong> o <strong>función de masa de probabilidad</strong> (fmp) de una variable discreta se define para cada número $x$ como $p(x)=P(X=x)=P$ (todas las $s\in S:X(s)=x$)<br>
+<em>Devore, 2012. cap. 3.</em></p>
+</blockquote>
+<h3 id="comentario-2">Comentario 2</h3>
+<p>También a las funciones de masa de probabilidad las llamamos funciones de densidad de probabilidad. Es muy importante notar que la función $p$ está  definida en todos los números reales, es decir:<br>
+$$p:R\to R$$</p>
+<h3 id="ejemplo-4">Ejemplo 4</h3>
+<p>En nuestro casola función de densidad de probabilidad ciene dada mediante la siguiente tabla:</p>
+<table>
+<thead>
+<tr>
+<th>$X$</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>Otro caso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$p(x)=P[X=x]$</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0.3</td>
+<td>0.4</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="definici%C3%B3n-5-par%C3%A1metro-de-distribuci%C3%B3n">Definición 5: Parámetro de distribución</h3>
+<blockquote>
+<p>Supóngase que $p(x)$ depende de la cantidad que puede ser asignada a cualquiera de un número de valores posibles, y cada valor determina una distribución de probabilidad diferente. Tal cantidad se llama <strong>parámetro</strong> de distribución. El conjunto de todas las distribuciones de probabilidad para diferente valores del parámetro se llama <strong>familia</strong> de distribuciones de probabilidad.<br>
+Devore, 2012, cap. 3.</p>
+</blockquote>
+<h3 id="ejemplo-5">Ejemplo 5</h3>
+<p>Si la probabilidad de que salga cara en el lanzamiento de la moneda es $p$, entonces tenemos la siguiente tabla:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$X$</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">Otro caso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$p(x)=P[X=x]$</td>
+<td style="text-align:center">$1-p$</td>
+<td style="text-align:center">$p$</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>En este caso, tenemos el valor $p$ como un parámetro.</p>
+<h3 id="definici%C3%B3n-5-funci%C3%B3n-de-distribuci%C3%B3n-acumulativa-de-una-variable-aleatoria-discreta">Definición 5: Función de distribución acumulativa de una variable aleatoria discreta</h3>
+<blockquote>
+<p>La <strong>función de distribución acumulativa</strong> (fda) $F_{(x)}$ de una variable aleatoria discreta $X$ con función de masa de probabilidad $p_{(x)}$ se define para cada número $x$ como<br>
+$$F_{(x)}=P_{(X\leq x)}=\sum_{y:y\leq x}p_{(y)}$$<br>
+Para cualquier número $x$, $F_{(x)}$ es la probabilidad de que el valor observado de $X$ será cuando mucho $x$.<br>
+<em>Devore, 2012. cap. 3.</em></p>
+</blockquote>
+<h3 id="ejemplo-6">Ejemplo 6</h3>
+<p>En nuestro caso la función de densidad de probabilidad viene dada mediante la siguiente tabla:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$X$</th>
+<th style="text-align:center">$x&lt;0$</th>
+<th style="text-align:center">$0\leq x&lt;1$</th>
+<th style="text-align:center">$1\leq x&lt;2$</th>
+<th style="text-align:center">$2\leq x&lt;3$</th>
+<th style="text-align:center">$3&lt;x$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$F_{(x)}=P[X\leq x]$</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">0.3</td>
+<td style="text-align:center">0.6</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>O también la podemos presentar de la siguiente forma:<br>
+$$F_{(x)}={0\text{ Si }x&lt;0;\quad0.1\text{ Si }0\leq x&lt;1;\quad0.3\text{ Si }1\leq x&lt;2;\quad0.6\text{ Si }2\leq x&lt;3;\quad1\text{ Si }3&lt;x}$$</p>
+<h3 id="definici%C3%B3n-6-el-valor-esperado-o-valor-medio-de-una-variable-aleatoria-discreta-x">Definición 6: El valor esperado o valor medio de una variable aleatoria discreta X</h3>
+<blockquote>
+<p>Sea $X$ una variable aleatoria discreta con un conjunto de valores posibles $D$ y una función de masa de probabilidad $p_{(x)}$. El <strong>valor esperado</strong> o <strong>valor medio</strong> de $X$, denotado por $E{(X)}$ o $\mu_x$ o sólo $\mu$, es<br>
+$$E_{(X)}=\mu_x=\sum_{x\in D}x\cdot p_{(x)}$$<br>
+<em>Devore, 2012. cap. 3.</em></p>
+</blockquote>
+<h3 id="ejemplo-7">Ejemplo 7</h3>
+<p>En nuestro caso, el valor esperado o valor medio viene dado mediante lo siguiente:<br>
+$$E[X]=0<em>0.1+1</em>0.2+2<em>0.3+3</em>0.4=2$$<br>
+El valor esperado de cualquier función</p>
+
+</body>
+</html>
